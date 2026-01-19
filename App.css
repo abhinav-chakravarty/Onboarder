@@ -23,7 +23,7 @@ body {
 }
 
 .app-container {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,14 +32,15 @@ body {
 
 .dashboard-card {
   background: var(--bg-panel);
-  width: 100%;
-  max-width: 1200px;
+  /* width: min(95%, 1200px); */
+  /* max-width: 1200px; */
   min-height: 600px;
   border-radius: 16px;
   box-shadow: var(--shadow);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 @media (min-width: 1024px) {
@@ -284,6 +285,46 @@ body {
 }
 .toast-popup.pass { border-color: var(--success); background: #ecfdf5; color: #064e3b; }
 .toast-popup.fail { border-color: var(--danger); background: #fef2f2; color: #7f1d1d; }
+
+/* Overrides: enforce white backgrounds, black text, and size limits */
+.dashboard-card {
+  width: min(95%, 1200px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app-container {
+  min-height: 80vh;
+  padding: 2rem;
+}
+
+/* Prevent the editor from expanding to full viewport height */
+.editor-frame {
+  max-height: 720px;
+  overflow: auto;
+}
+
+/* Ensure textarea (code editor) is white with black text */
+.code-area {
+  background: #ffffff !important;
+  color: #000000 !important;
+  caret-color: #000000 !important;
+}
+
+.code-area::placeholder {
+  color: var(--text-muted);
+}
+
+/* Reinforce input field styling */
+.input-control {
+  background: #ffffff !important;
+  color: #000000 !important;
+  max-width: 480px;
+}
+
+.input-control::placeholder {
+  color: var(--text-muted);
+}
 
 @keyframes slideIn {
   from { transform: translateX(100%); opacity: 0; }
